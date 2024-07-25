@@ -1,0 +1,9 @@
+{
+  "name": "@workspace/root",
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "./nodejs_std",
+    "./nodejs_uws"
+  ]
+}

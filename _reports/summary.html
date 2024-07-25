@@ -1,0 +1,33 @@
+<script type="module">
+  const srcs = [
+    "go_std",
+    "nodejs_std",
+    "nodejs_uws",
+    "rust_actix",
+    "rust_hyper",
+    "rust_may_minihttp",
+    "rust_tiny_http",
+    "rust_tokio_raw",
+  ]
+
+  for (const src of srcs) {
+    if (!(await fetch(`./${src}/index.html`).then(r => r.ok))) {
+      continue
+    }
+    let iframe = document.createElement('iframe')
+    iframe.src = src
+    document.body.appendChild(iframe)
+  }
+</script>
+<style>
+  body {
+    margin: 0;
+  }
+
+  iframe {
+    margin-bottom: 20px;
+    height: 900px;
+    width: 100vw;
+    display: block;
+  }
+</style>

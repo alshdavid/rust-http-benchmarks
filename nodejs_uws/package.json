@@ -1,0 +1,7 @@
+{
+  "name": "@workspace/nodejs_uws",
+  "type": "module",
+  "dependencies": {
+    "uWebSockets.js": "github:uNetworking/uWebSockets.js#v20.44.0"
+  }
+}

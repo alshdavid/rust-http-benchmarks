@@ -1,0 +1,11 @@
+[package]
+name = "rust_hyper"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "*", features = ["full"] }
+hyper = { version = "*", features = ["full"] }
+http-body-util = "*"
+hyper-util = { version = "*", features = ["full"] }
+num_cpus = "*"

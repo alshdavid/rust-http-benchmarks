@@ -1,0 +1,21 @@
+[workspace]
+resolver = "2"
+
+members = [
+  "./_runner",
+  "./rust_actix",
+  "./rust_hyper",
+  "./rust_may_minihttp",
+  "./rust_tiny_http",
+  "./rust_tokio_raw",
+]
+
+[profile.release]
+opt-level = 3
+debug = false
+lto = true
+strip = "debuginfo"
+panic = 'unwind'
+incremental = false
+codegen-units = 1
+rpath = false

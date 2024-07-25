@@ -1,0 +1,10 @@
+[package]
+name = "rust_tokio_raw"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "*", features = ["full"] }
+httparse = "*"
+bytes = "*"
+num_cpus = "*"
