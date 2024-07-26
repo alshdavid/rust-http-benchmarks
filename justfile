@@ -4,7 +4,7 @@ install:
   npm install
 
 run package *ARGS:
-  cd {{package}} && just run {{ARGS}}
+  cd {{package}} && bash ./start.bash {{ARGS}}
 
 watch package *ARGS:
   cargo watch --watch {{package}} -- bash -c "cd {{package}} && exec just run {{ARGS}}"

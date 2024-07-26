@@ -6,7 +6,7 @@ use std::sync::Arc;
 fn main() {
   let addr = SocketAddr::from(([127, 0, 0, 1], get_port()));
   let server = Arc::new(tiny_http::Server::http(addr).unwrap());
-  println!("Now listening on port {}", get_port());
+  println!("http://localhost:{}", get_port());
 
   for rq in server.incoming_requests() {
     let response = tiny_http::Response::from_string("hello world".to_string());
