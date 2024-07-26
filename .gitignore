@@ -2,7 +2,8 @@ target
 node_modules
 profile
 _reports/*
-!_reports/summary.html
+!_reports/saved/*
+!_reports/saved
 dist
 package-lock.json
 Cargo.lock

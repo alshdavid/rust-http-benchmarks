@@ -13,6 +13,8 @@ fmt:
   cargo +nightly fmt
 
 benchmark:
+  rm -rf "./_reports/summary.html"
+  cp "./_runner/summary.template.html" "./_reports/summary.html"
   just benchmark_one go_std
   just benchmark_one nodejs_std
   just benchmark_one nodejs_uws
@@ -42,16 +44,20 @@ vegeta package:
   echo "GET http://localhost:{{PORT}}/" | \
   vegeta attack \
     -duration=4s \
-    -rate=100 \
     -keepalive=false \
-    -connections=50000 \
-    -rate=1000 \
+    -connections=10000 \
+    -rate=500 \
     -output=_reports/{{package}}/attack.bin
 
   vegeta plot -title={{package}} _reports/{{package}}/attack.bin > _reports/{{package}}/index.html
   @echo "<pre><code>" >> _reports/{{package}}/index.html
   cat _reports/{{package}}/attack.bin | vegeta report >> _reports/{{package}}/index.html
   @echo "</code></pre>" >> _reports/{{package}}/index.html
+
+  cat ./_reports/{{package}}/index.html | base64 -w 0 > _reports/{{package}}/index.html.b64
+  echo '<iframe src="data:text/html;base64,' >> _reports/summary.html
+  cat _reports/{{package}}/index.html.b64 >> _reports/summary.html
+  echo '"></iframe>' >> _reports/summary.html
 
 oha package:
   oha -n 50000 -c 5000 --latency-correction http://localhost:8080
